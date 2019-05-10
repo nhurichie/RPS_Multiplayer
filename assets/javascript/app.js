@@ -12,32 +12,45 @@ const scissorsDiv = document.getElementById("scissor-opt");
 
 //mechanical choice
 function getMechChoice() {
-    const choices = ["rock-opt", "paper-opt", "scissor-opt"];
+    const choices = ["rock", "paper", "scissor"];
     const randomChoice = Math.floor(Math.random() * 3);
     return choices[randomChoice];
-    // console.log(Math.floor(Math.random() * 3));
 }
 
 //real choice
 function game(realChoice) {
-
-    // console.log("optionChoice" + realChoice);
+    const mechChoice = getMechChoice();
+    switch (realChoice + mechChoice) {
+        case "rockpaper":
+        case "paperrock":
+        case "scissorpaper":
+            console.log("User Wins!");
+            break;
+        case "rockpaper":
+        case "paperscissor":
+        case "scissorrock":
+            console.log("User Loses!");
+            break;
+        case "rockrock":
+        case "paperpaper":
+        case "scissorscissor":
+            console.log("Draw!");
+            break;
+    }
 }
+
 
 function mainOptions() {
     rockDiv.addEventListener("click", function() {
         game("rock-opt");
-        // console.log("You clicked: Rock!");
     })
 
     paperDiv.addEventListener("click", function() {
-        game("paper-opt");
-        // console.log("You clicked: Paper!");
+        game("paper-opt");   
     })
 
     scissorsDiv.addEventListener("click", function() {
         game("scissor-opt");
-        // console.log("You clicked: Scissors!");
     }) 
 
 }
